@@ -1,0 +1,6 @@
+.myTxar {
+    margin-top: 15px;
+    width: 100%;
+    border-image: linear-gradient(to left, #7773C6, #9d6cc0, #bd64b2) 40%;
+    font-size: 1rem;
+}

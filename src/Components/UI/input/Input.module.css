@@ -1,0 +1,7 @@
+.myInp {
+    margin-top: 15px;
+    border-image: linear-gradient(to left, #7773C6, #9d6cc0, #bd64b2) 10%;
+    width: 100%;
+    font-size: 1rem;
+    height: 2rem;
+}
