@@ -3,6 +3,7 @@ import { PostItemType } from './PostItem'
 import { PostsList } from './PostsList'
 import { Input } from './UI/input/Input'
 
+
 type PostsListsWithFilterType = {
     filter: {
         sortMethod: string, 

@@ -7,6 +7,7 @@ import { Input } from './Components/UI/input/Input';
 import { PostsListsWithFilter } from './Components/PostsListsWithFilter';
 import { Modal } from './Components/UI/Modal/Modal';
 import { Button } from './Components/UI/button/Button';
+import { useSearchedAndSortedPosts } from './Hooks/usePosts';
 
 
 function App() {
@@ -33,20 +34,7 @@ function App() {
     setFilter({ ...filter, query: e.currentTarget.value })
   }
 
-  const getSortedPosts = () => {
-    if (filter.sortMethod) {
-      const valueSwitcher = filter.sortMethod === "title" ? "title" : "body"
-      return [...posts].sort((a, b) => a[valueSwitcher].localeCompare(b[valueSwitcher]))
-    }
-    return posts
-  }
-
-  const sortedPosts = useMemo(getSortedPosts, [filter.sortMethod, posts])
-  const sortedAndSearchedPosts = useMemo(() => {
-    return sortedPosts.filter(e => e.title.toLowerCase().includes(filter.query.toLowerCase()))
-  }, [filter.query, sortedPosts]
-  )
-
+  const sortedAndSearchedPosts = useSearchedAndSortedPosts(posts,filter.sortMethod,filter.query)
 
   const createPosts = (newPost: PostItemType) => {
     setPosts([newPost, ...posts])
