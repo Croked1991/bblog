@@ -11,11 +11,13 @@ In the app uses (or will be uses at soon):
   - redux
   - react-redux
   - redux thunk
+  - type script
   - JSON Placeholder API
   - axios
   - modal windows
   - authorisation form
   - custom UI components
+  - react-transition-group
   - and other
   
  Welcome to try it)))
