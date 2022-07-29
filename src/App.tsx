@@ -1,4 +1,4 @@
-import React, { useMemo, useState, ChangeEvent } from 'react';
+import React, { useMemo, useState, ChangeEvent, useEffect } from 'react';
 import { PostItemType } from './Components/PostItem';
 import { PostsList } from './Components/PostsList';
 import "./Styles/App.css"
@@ -8,7 +8,9 @@ import { PostsListsWithFilter } from './Components/PostsListsWithFilter';
 import { Modal } from './Components/UI/Modal/Modal';
 import { Button } from './Components/UI/button/Button';
 import { useSearchedAndSortedPosts } from './Hooks/usePosts';
-
+import { PostServise } from './API/PostServise';
+import { Loader } from './Components/UI/Loader/Loader';
+import { useFetch } from './Hooks/useFetch';
 
 function App() {
 
@@ -20,15 +22,25 @@ function App() {
 
   const [filter, setFilter] = useState({ sortMethod: "", query: "" })
 
+  const [fetchPosts, isPostsLoading, postError] = useFetch(async ()=>{
+    const posts = await PostServise.getAll()
+    setPosts(posts)
+  })
+
   const applyFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setFilter({ ...filter, sortMethod: e.currentTarget.value })
   }
 
   const [switcher, setSwitcher] = useState(false)
+  
   const changeSwitcher = () => {
-    
     setSwitcher(!switcher)
   }
+
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
 
   const applySearch = (e: ChangeEvent<HTMLInputElement>) => {
     setFilter({ ...filter, query: e.currentTarget.value })
@@ -57,14 +69,20 @@ function App() {
           posts={posts}
         />
       </Modal>
-      <PostsListsWithFilter
-        filter={filter}
-        applyFilter={applyFilter}
-        applySearch={applySearch}
-        sortedAndSearchedPosts={sortedAndSearchedPosts}
-        removePost={removePost}
-      />
-
+      {postError ? 
+        <h1>Error: {postError}</h1> : 
+          isPostsLoading ? 
+            <div style={{"display":"flex","justifyContent":"center","marginTop":"200px"}}>
+              <Loader/>
+            </div> :
+              <PostsListsWithFilter
+                filter={filter}
+                applyFilter={applyFilter}
+                applySearch={applySearch}
+                sortedAndSearchedPosts={sortedAndSearchedPosts}
+                removePost={removePost}
+              />
+      }
     </div>
   );
 }
