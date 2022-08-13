@@ -20,7 +20,7 @@ export const PostItem = (props: PostItemComponentType) => {
     return (
             <div className="posts">
                 <div className="postContent">
-                    <strong>{props.index}. {props.post.title}</strong>
+                    <strong>{props.post.id}. {props.post.title}</strong>
                     <div>
                         {props.post.body}
                     </div>

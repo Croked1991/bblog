@@ -8,7 +8,6 @@
   font-size: 1rem;
   font-weight: 500;
   height: 2rem;
-  padding: 0 1.6rem;
   margin-top: 1rem;
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
@@ -51,8 +50,14 @@
   touch-action: manipulation;
 }
 
-@media (min-width: 768px) {
-  .button-36 {
-    padding: 0 2.6rem;
-  }
+.small{
+  min-width: 2rem;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.active{
+  background-image: linear-gradient(92.88deg, #e282ff 9.16%, #be74ff 43.89%, #a382ff 64.72%);
+  font-weight: bold;
 }
