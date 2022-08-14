@@ -51,10 +51,9 @@
 }
 
 .small{
-  min-width: 2rem;
-  margin-left: 5px;
-  margin-bottom: 10px;
+  min-width: 2.5rem;
   padding: 0;
+  margin-top: 0;
 }
 
 .active{

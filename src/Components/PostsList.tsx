@@ -41,9 +41,9 @@ export const PostsList = (props: PostsListType) => {
                     { value: "body", name: "By body" }
                 ]}
                 value={props.sorter}
-                sortPosts={props.sortPosts}
                 filterBySearchQuery={props.filterBySearchQuery}
                 searchQuery={props.searchQuery}
+                callback={(e)=>props.sortPosts(e)}
             />
             {mapPosts}
         </div>

@@ -1,4 +1,4 @@
-import { getPagesArray } from './../utils/pages';
+import { getPagesArray } from '../utils/Pages';
 import {useMemo} from 'react';
 
 

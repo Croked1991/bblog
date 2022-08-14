@@ -12,6 +12,7 @@ type InputType = {
     callback: (e: React.ChangeEvent<HTMLInputElement>)=>void
     style?: React.CSSProperties
     autofocus?:boolean
+    type?: string
 }
 
 export const Input = (props: InputType) => {   
@@ -19,8 +20,9 @@ export const Input = (props: InputType) => {
     return (
         <div>
             <input
+                type={props.type}
                 onChange={e => props.callback(e)}
-                value={props.value} style={props.style} className={style.myInp} type={"text"}
+                value={props.value} style={props.style} className={style.myInp}
                 placeholder={props.placeholder}
                 autoFocus={props.autofocus}
             >
